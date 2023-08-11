@@ -35,7 +35,7 @@ function divide(numbers) {
 let firstNumber = 0
 let operator = ""
 let secondNumber = 0
-
+// takes operator and 2 numbers and calls respective functions
 function operate(op, n1, n2) {
     switch (op) {
         case "+":

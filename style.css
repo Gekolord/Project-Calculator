@@ -1,0 +1,46 @@
+body {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.container {
+    display: flex;
+    align-self: center;
+    margin: auto;
+    margin-top: 8em;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid gray;
+}
+
+button {
+    width: 80px;
+    height: 80px;
+    color: white;
+    background-color: black;
+    border: 0px;
+ 
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 320px;
+}
+
+output {
+    background-color: rgb(46, 43, 43);
+    color: white;
+    width: 100%;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+}
