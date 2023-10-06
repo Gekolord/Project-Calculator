@@ -1,12 +1,10 @@
 
-const result = document.getElementById('result')
 
 
-const add = function(n) {
+
+const add = function(n1, n2) {
     let sum = 0
-    for (let i = 0; i < arguments.length; i++) {
-      sum += arguments[i];
-    }
+    sum = n1 + n2
     return sum;
   };
   
@@ -19,11 +17,9 @@ const add = function(n) {
   };
   
   
-  const multiply = function() {
+  const multiply = function(n1, n2) {
     let mul = 1
-    for (let i = 0; i < arguments.length; i++) {
-      mul *= arguments[i];
-    }
+    mul = n1 * n2
     return mul;
   };
   
@@ -41,40 +37,53 @@ let operator = ""
 let secondNumber = ""
 let displayedNumber = ""
 // takes operator and 2 numbers and calls respective functions
-function operate(op, n1, n2) {
-    switch (op) {
+function operate(oper, n1, n2) {
+    let returnValue = 0;
+    switch (oper) {
         case "+":
-            add(n1,n2);
+            returnValue = add(n1,n2);
             break;
         case "-":
-            subtract(n1,n2);
+            returnValue = subtract(n1,n2);
             break;
         case "*":
-            multiply(n1,n2);
+            returnValue = multiply(n1,n2);
             break;
         case "/":
-            divide(n1,n2);
+            returnValue = divide(n1,n2);
             break;
     }
+    return returnValue;
 }
 // populates input field with numbers
 function display(n) {
   firstNumber += n
-  const input = document.getElementById('input').innerHTML = +firstNumber
+  const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator} ${+firstNumber}`
+  
 }
 // Takes operator and 2 numbers. Calculates and populates display.
 // If user presses multiple times on 
 // the operator without typing numbers, it wont work.
-function onOperatorClick(op, n1, n2) {
-  if (operator == "") {
-    secondNumber += firstNumber
+function onOperatorClick(op) {
+  
+  if (operator == "" && displayedNumber == 0) {
+    secondNumber += +firstNumber
     firstNumber = ""
-    operator += op
-  } else if (operator != "" && firstNumber != ""){
-    displayedNumber = operate(op, n1, n2)
-    firstNumber = ""
-    secondNumber = ""
-    operator = ""
-  }
+    operator = op
 
+  } else if (operator != "" &&  firstNumber != ""){
+    // secondNumber = operate(op, +secondNumber, +firstNumber)
+    firstNumber = Number(firstNumber);
+    secondNumber = Number(secondNumber);
+    
+    displayedNumber = operate(operator, secondNumber, firstNumber);
+
+    const result = document.getElementById('result').innerHTML = displayedNumber;
+    
+    firstNumber = ""
+    secondNumber = displayedNumber
+    operator = op
+    
+  }
+  const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator}`
 }

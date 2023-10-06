@@ -12,21 +12,21 @@
         <div class="calculator">
             <div class="display">
                 <div id="input">Input</div>
-                <div id="result">Result</div>
+                <div id="result">Result</div> 
             </div>
             <div class="buttons">
                 <button id="ac" >AC</button>
                 <button id="c" >C</button>
                 <button id="%" >%</button>
-                <button id="/" >/</button>
+                <button id="/" onclick="onOperatorClick('/')">/</button>
                 <button id="7" onclick="display(7)">7</button>
                 <button id="8" onclick="display(8)">8</button>
                 <button id="9" onclick="display(9)">9</button>
-                <button id="*" >*</button>
+                <button id="*" onclick="onOperatorClick('*')">*</button>
                 <button id="4" onclick="display(4)">4</button>
                 <button id="5" onclick="display(5)">5</button>
                 <button id="6" onclick="display(6)">6</button>
-                <button id="+" >+</button>
+                <button id="+" onclick="onOperatorClick('+')">+</button>
                 <button id="1" onclick="display(1)">1</button>
                 <button id="2" onclick="display(2)">2</button>
                 <button id="3" onclick="display(3)">3</button>
