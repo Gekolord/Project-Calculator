@@ -1,3 +1,7 @@
+
+const result = document.getElementById('result')
+
+
 const add = function(n) {
     let sum = 0
     for (let i = 0; i < arguments.length; i++) {
@@ -32,9 +36,10 @@ function divide(numbers) {
     return dividor
 }
 
-let firstNumber = 0
+let firstNumber = ""
 let operator = ""
-let secondNumber = 0
+let secondNumber = ""
+let displayedNumber = ""
 // takes operator and 2 numbers and calls respective functions
 function operate(op, n1, n2) {
     switch (op) {
@@ -51,4 +56,25 @@ function operate(op, n1, n2) {
             divide(n1,n2);
             break;
     }
+}
+// populates input field with numbers
+function display(n) {
+  firstNumber += n
+  const input = document.getElementById('input').innerHTML = +firstNumber
+}
+// Takes operator and 2 numbers. Calculates and populates display.
+// If user presses multiple times on 
+// the operator without typing numbers, it wont work.
+function onOperatorClick(op, n1, n2) {
+  if (operator == "") {
+    secondNumber += firstNumber
+    firstNumber = ""
+    operator += op
+  } else if (operator != "" && firstNumber != ""){
+    displayedNumber = operate(op, n1, n2)
+    firstNumber = ""
+    secondNumber = ""
+    operator = ""
+  }
+
 }

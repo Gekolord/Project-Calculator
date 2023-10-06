@@ -34,13 +34,24 @@ button {
     width: 320px;
 }
 
-output {
+#input,
+#result {
     background-color: rgb(46, 43, 43);
     color: white;
     width: 100%;
-}
+    flex: 1;
+    text-align: right;
+    word-wrap: break-word;
+    word-break: break-all;
+    justify-content: space-around; }
 
 .display {
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+    justify-content: space-around; 
+
+
 }
