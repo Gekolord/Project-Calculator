@@ -59,7 +59,7 @@ function operate(oper, n1, n2) {
 function display(n) {
   firstNumber += n
   const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator} ${+firstNumber}`
-  
+  const result = document.getElementById('result').innerHTML = `${operate(operator, +secondNumber, +firstNumber)}`
 }
 // Takes operator and 2 numbers. Calculates and populates display.
 // If user presses multiple times on 
