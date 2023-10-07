@@ -1,4 +1,7 @@
-
+let firstNumber = ""
+let operator = ""
+let secondNumber = ""
+let displayedNumber = ""
 
 
 
@@ -36,38 +39,42 @@ function modulo(n1, n2) {
   return n1 % n2
 }
 
-let firstNumber = ""
-let operator = ""
-let secondNumber = ""
-let displayedNumber = ""
+
 // takes operator and 2 numbers and calls respective functions
 function operate(oper, n1, n2) {
     let returnValue = 0;
     switch (oper) {
         case "+":
-            returnValue = add(n1,n2);
+            returnValue = +add(n1,n2).toFixed(5);
             break;
         case "-":
-            returnValue = subtract(n1,n2);
+            returnValue = +subtract(n1,n2).toFixed(5);
             break;
         case "*":
-            returnValue = multiply(n1,n2);
+            returnValue = +multiply(n1,n2).toFixed(5);
             break;
         case "/":
-            returnValue = divide(n1,n2);
+            if (n2 == 0) {return 0;}
+            returnValue = +divide(n1,n2).toFixed(5);
             break;
         case "%":
-            returnValue = modulo(n1, n2);
+            returnValue = +modulo(n1, n2).toFixed(5);
             break;
     }
     return returnValue;
 }
 // populates input field with numbers
 function display(n) {
+  if (firstNumber.length < 15) {
   firstNumber += n
   firstNumber = firstNumber.toString();
+  if (firstNumber.charAt(0) == '0' && firstNumber.charAt(1) != '.') {
+    firstNumber = +firstNumber;
+    firstNumber = firstNumber.toString();
+  }
   const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator} ${firstNumber}`
   const result = document.getElementById('result').innerHTML = `${operate(operator, +secondNumber, +firstNumber)}`
+  }
 }
 // Takes operator and 2 numbers. Calculates and populates display.
 // If user presses multiple times on 
@@ -99,10 +106,12 @@ function onOperatorClick(op) {
 
 
 function dot() {
-  if (firstNumber.includes('.') == false) {
-    firstNumber += '.'
-    const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator} ${firstNumber}`
-    const result = document.getElementById('result').innerHTML = `${operate(operator, +secondNumber, +firstNumber)}`
+  if (firstNumber.length > 0) {
+    if (firstNumber.includes('.') == false) {
+      firstNumber += '.'
+      const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator} ${firstNumber}`
+      const result = document.getElementById('result').innerHTML = `${operate(operator, +secondNumber, +firstNumber)}`
+    }
   }
 }
 
@@ -114,6 +123,10 @@ function clearNum() {
       firstNumber = firstNumber.slice(0, -1);
       const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator}`
       const result = document.getElementById('result').innerHTML = `${0}`
+    } else if (firstNumber.includes('e') == true){
+      firstNumber = ''
+      const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator} ${firstNumber}`
+      const result = document.getElementById('result').innerHTML = `${operate(operator, +secondNumber, +firstNumber)}`
     } else {
       firstNumber = firstNumber.slice(0, -1);
       const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator} ${firstNumber}`
@@ -133,4 +146,32 @@ function clearNum() {
       const result = document.getElementById('result').innerHTML = `${operate(operator, +secondNumber, +firstNumber)}`
   }
 
+}
+
+function calculationResult() {
+  if (firstNumber != '' && secondNumber != '' && operator != '') {
+    firstNumber = Number(firstNumber);
+    secondNumber = Number(secondNumber);
+    
+    displayedNumber = operate(operator, secondNumber, firstNumber);
+
+    
+    
+
+    firstNumber = displayedNumber.toString();
+    secondNumber = ''
+    operator = ''
+    displayedNumber = 0
+    const input = document.getElementById('input').innerHTML = `${firstNumber}`
+    const result = document.getElementById('result').innerHTML = '&nbsp;';
+  }
+}
+
+function clearAllData() {
+  firstNumber = ''
+  secondNumber = ''
+  operator = ''
+  displayedNumber = 0
+  const input = document.getElementById('input').innerHTML = `${0}`
+  const result = document.getElementById('result').innerHTML = '&nbsp;';
 }
