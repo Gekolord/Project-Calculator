@@ -65,7 +65,8 @@ function operate(oper, n1, n2) {
 // populates input field with numbers
 function display(n) {
   firstNumber += n
-  const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator} ${+firstNumber}`
+  firstNumber = firstNumber.toString();
+  const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator} ${firstNumber}`
   const result = document.getElementById('result').innerHTML = `${operate(operator, +secondNumber, +firstNumber)}`
 }
 // Takes operator and 2 numbers. Calculates and populates display.
@@ -74,12 +75,13 @@ function display(n) {
 function onOperatorClick(op) {
   
   if (operator == "" && displayedNumber == 0) {
-    secondNumber += +firstNumber
+    if (firstNumber != '') {    
+        secondNumber += +firstNumber
+      }
     firstNumber = ""
     operator = op
 
   } else if (operator != "" &&  firstNumber != ""){
-    // secondNumber = operate(op, +secondNumber, +firstNumber)
     firstNumber = Number(firstNumber);
     secondNumber = Number(secondNumber);
     
@@ -90,7 +92,7 @@ function onOperatorClick(op) {
     firstNumber = ""
     secondNumber = displayedNumber
     operator = op
-    
+    displayedNumber = 0
   }
   const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator}`
 }
@@ -102,4 +104,33 @@ function dot() {
     const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator} ${firstNumber}`
     const result = document.getElementById('result').innerHTML = `${operate(operator, +secondNumber, +firstNumber)}`
   }
+}
+
+
+function clearNum() {
+  
+  if (firstNumber != '') {
+    if (firstNumber.length == 1 && secondNumber != '') {
+      firstNumber = firstNumber.slice(0, -1);
+      const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator}`
+      const result = document.getElementById('result').innerHTML = `${0}`
+    } else {
+      firstNumber = firstNumber.slice(0, -1);
+      const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator} ${firstNumber}`
+      const result = document.getElementById('result').innerHTML = `${operate(operator, +secondNumber, +firstNumber)}`
+    }
+  } else if (firstNumber == '' && operator != '') {
+      operator = ''
+      firstNumber = secondNumber
+      secondNumber = ''
+      firstNumber = firstNumber.toString();
+      const input = document.getElementById('input').innerHTML = `${firstNumber}`
+      const result = document.getElementById('result').innerHTML = `${0}`
+  } else if (firstNumber == '' && operator == '' && secondNumber != '') {
+
+      firstNumber = firstNumber.slice(0, -1);
+      const input = document.getElementById('input').innerHTML = `${firstNumber}`
+      const result = document.getElementById('result').innerHTML = `${operate(operator, +secondNumber, +firstNumber)}`
+  }
+
 }
