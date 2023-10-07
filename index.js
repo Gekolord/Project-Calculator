@@ -32,6 +32,10 @@ function divide(numbers) {
     return dividor
 }
 
+function modulo(n1, n2) {
+  return n1 % n2
+}
+
 let firstNumber = ""
 let operator = ""
 let secondNumber = ""
@@ -51,6 +55,9 @@ function operate(oper, n1, n2) {
             break;
         case "/":
             returnValue = divide(n1,n2);
+            break;
+        case "%":
+            returnValue = modulo(n1, n2);
             break;
     }
     return returnValue;
@@ -86,4 +93,13 @@ function onOperatorClick(op) {
     
   }
   const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator}`
+}
+
+
+function dot() {
+  if (firstNumber.includes('.') == false) {
+    firstNumber += '.'
+    const input = document.getElementById('input').innerHTML = `${secondNumber} ${operator} ${firstNumber}`
+    const result = document.getElementById('result').innerHTML = `${operate(operator, +secondNumber, +firstNumber)}`
+  }
 }
