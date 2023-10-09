@@ -84,7 +84,7 @@ function onOperatorClick(op) {
   if (operator == "" && displayedNumber == 0) {
     if (firstNumber != '') {    
         secondNumber += +firstNumber
-      }
+      } 
     firstNumber = ""
     operator = op
 
@@ -175,3 +175,4 @@ function clearAllData() {
   const input = document.getElementById('input').innerHTML = `${0}`
   const result = document.getElementById('result').innerHTML = '&nbsp;';
 }
+

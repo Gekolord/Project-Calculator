@@ -7,6 +7,7 @@
 </head>
 <body class="body">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.cdnfonts.com/css/calculator" rel="stylesheet">
     <script src="index.js"></script>
     <div class="container">
         <div class="calculator">
@@ -15,18 +16,18 @@
                 <div id="result">Result</div> 
             </div>
             <div class="buttons">
-                <button id="ac" onclick="clearAllData()">AC</button>
+                <button id="ac"  onclick="clearAllData()">AC</button>
                 <button id="c" onclick="clearNum()">C</button>
-                <button id="%" onclick="onOperatorClick('%')">%</button>
-                <button id="/" onclick="onOperatorClick('/')">/</button>
+                <button id="%" class="operator" onclick="onOperatorClick('%')">%</button>
+                <button id="/" class="operator" onclick="onOperatorClick('/')">/</button>
                 <button id="7" onclick="display(7)">7</button>
                 <button id="8" onclick="display(8)">8</button>
                 <button id="9" onclick="display(9)">9</button>
-                <button id="*" onclick="onOperatorClick('*')">*</button>
+                <button id="*" class="operator" onclick="onOperatorClick('*')">*</button>
                 <button id="4" onclick="display(4)">4</button>
                 <button id="5" onclick="display(5)">5</button>
                 <button id="6" onclick="display(6)">6</button>
-                <button id="+" onclick="onOperatorClick('+')">+</button>
+                <button id="+" class="operator" onclick="onOperatorClick('+')">+</button>
                 <button id="1" onclick="display(1)">1</button>
                 <button id="2" onclick="display(2)">2</button>
                 <button id="3" onclick="display(3)">3</button>
@@ -34,7 +35,7 @@
                 <button class="void"></button>
                 <button id="zero" onclick="display(0)">0</button>
                 <button id="=" onclick="calculationResult()">=</button>
-                <button id="-" onclick="onOperatorClick('-')">-</button>
+                <button id="-" class="operator" onclick="onOperatorClick('-')">-</button>
             </div>
         </div>
     </div>
